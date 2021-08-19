@@ -24,21 +24,21 @@
                 class="nav-item {{ request()->is('admin/brands') || request()->is('admin/brands/*')  ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/brands">
                     <i class="fas fa-boxes"></i>
-                    <p>Brands</p>
+                    <p>Rooms</p>
                 </a>
             </li>
             <li
                 class="nav-item {{ request()->is('admin/products') || request()->is('admin/products/*')  ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/products">
                     <i class="fas fa-car"></i>
-                    <p>Products</p>
+                    <p>Bookings</p>
                 </a>
             </li>
             <li
                 class="nav-item {{ request()->is('admin/orders') || request()->is('admin/orders/*')  ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/orders">
                     <i class="fas fa-shopping-cart"></i>
-                    <p>Orders</p>
+                    <p>Food menu</p>
                 </a>
             </li>
             {{-- <li

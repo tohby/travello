@@ -294,22 +294,8 @@
                 </div>
             </div>
             <div class="food-menu-tabs" data-aos="fade">
-                <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active letter-spacing-2" id="mains-tab" data-toggle="tab" href="#mains"
-                            role="tab" aria-controls="mains" aria-selected="true">Mains</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link letter-spacing-2" id="desserts-tab" data-toggle="tab" href="#desserts"
-                            role="tab" aria-controls="desserts" aria-selected="false">Desserts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link letter-spacing-2" id="drinks-tab" data-toggle="tab" href="#drinks" role="tab"
-                            aria-controls="drinks" aria-selected="false">Drinks</a>
-                    </li>
-                </ul>
-                <div class="tab-content py-5" id="myTabContent">
 
+                <div class="tab-content py-5" id="myTabContent">
 
                     <div class="tab-pane fade show active text-left" id="mains" role="tabpanel"
                         aria-labelledby="mains-tab">
