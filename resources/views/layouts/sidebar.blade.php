@@ -23,38 +23,30 @@
             <li
                 class="nav-item {{ request()->is('admin/brands') || request()->is('admin/brands/*')  ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/brands">
-                    <i class="fas fa-boxes"></i>
+                    <i class="fas fa-door-open"></i>
                     <p>Rooms</p>
                 </a>
             </li>
             <li
                 class="nav-item {{ request()->is('admin/products') || request()->is('admin/products/*')  ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/products">
-                    <i class="fas fa-car"></i>
+                    <i class="fas fa-file-signature"></i>
                     <p>Bookings</p>
                 </a>
             </li>
-            <li
-                class="nav-item {{ request()->is('admin/orders') || request()->is('admin/orders/*')  ? 'active' : '' }}">
-                <a class="nav-link" href="/admin/orders">
-                    <i class="fas fa-shopping-cart"></i>
+            <li class="nav-item {{ request()->is('admin/food') || request()->is('admin/food/*')  ? 'active' : '' }}">
+                <a class="nav-link" href="/admin/food">
+                    <i class="fas fa-utensils"></i>
                     <p>Food menu</p>
                 </a>
             </li>
-            {{-- <li
+            <li
                 class="nav-item {{ request()->is('admin/feedbacks') || request()->is('admin/feedbacks/*')  ? 'active' : '' }}">
-            <a class="nav-link" href="/admin/feedbacks">
-                <i class="fas fa-comment-dots"></i>
-                <p>Feedback</p>
-            </a>
-            </li> --}}
-
-            {{-- <li class="nav-item active active-pro">
-                <a class="nav-link active" href="upgrade.html">
-                    <i class="nc-icon nc-alien-33"></i>
-                    <p>Upgrade to PRO</p>
+                <a class="nav-link" href="/admin/feedbacks">
+                    <i class="fas fa-comment-dots"></i>
+                    <p>Feedback</p>
                 </a>
-            </li> --}}
+            </li>
         </ul>
     </div>
 </div>

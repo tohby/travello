@@ -9,7 +9,7 @@
     <meta name="generator" content="Jekyll v4.1.1">
     <meta http-equiv="Content-Security-Policy"
         content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://platform.linkedin.com ">
-    <title>CARtel</title>
+    <title>Travello</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -72,7 +72,7 @@
             </a>
             @endif
         </div>
-        <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2020</p>
+        <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2021</p>
     </form>
 </body>
 
