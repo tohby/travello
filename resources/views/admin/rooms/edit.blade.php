@@ -9,7 +9,7 @@
             <ol class="breadcrumb bg-transparent p-0">
                 <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="/admin/rooms">Rooms</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Create rooms</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit room <b>{{$room->name}}</b></li>
             </ol>
         </div>
         <div class="col-lg-2">
@@ -21,41 +21,49 @@
             <div class="card">
                 <div class="card-header">Create new room</div>
                 <div class="card-body">
-                    <form action="{{action("RoomController@store")}}" method="post" enctype="multipart/form-data">
+                    <form action="{{action("RoomController@update", $room->id)}}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input type="text" class="form-control" name="name" placeholder="Enter room name">
+                            <input type="text" class="form-control" name="name" placeholder="Enter room name"
+                                value="{{$room->name}}">
                         </div>
                         <div class="form-group">
                             <label for="name">Price:</label>
-                            <input type="number" class="form-control" name="price" placeholder="Enter room price">
+                            <input type="number" class="form-control" name="price" placeholder="Enter room price"
+                                value="{{$room->price}}">
                         </div>
                         <div class="form-group">
                             <label for="name">Size:</label>
-                            <input type="number" class="form-control" name="size" placeholder="Enter room size">
+                            <input type="number" class="form-control" name="size" placeholder="Enter room size"
+                                value="{{$room->size}}">
                         </div>
                         <div class="form-group">
                             <label for="name">Capacity:</label>
-                            <input type="number" class="form-control" name="capacity" placeholder="Enter room capacity">
+                            <input type="number" class="form-control" name="capacity" placeholder="Enter room capacity"
+                                value="{{$room->capacity}}">
                         </div>
                         <div class="form-group">
                             <label for="name">Services:</label>
-                            <input type="text" class="form-control" name="services" placeholder="Enter room services">
+                            <input type="text" class="form-control" name="services" placeholder="Enter room services"
+                                value="{{$room->services}}">
                         </div>
                         <div class="form-group">
                             <label for="image">Image</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile" name="image">
+                                <input type="file" class="custom-file-input" id="customFile" name="image"
+                                    value="{{$room->image}}">
                                 <label class="custom-file-label" for="customFile">Choose room image</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="name">Description:</label>
                             <textarea rows="3" class="form-control" name="description"
-                                placeholder="Enter product description"></textarea>
+                                placeholder="Enter product description">{{$room->description}}"</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary float-right">Submit</button>
+                        @method('PUT')
                     </form>
                 </div>
             </div>

@@ -15,7 +15,8 @@ class RoomController extends Controller
     public function index()
     {
         // room index
-        return view('admin/rooms/index');
+        $rooms = Room::orderBy('created_at', 'desc')->paginate(6);
+        return view('admin/rooms/index')->with('rooms', $rooms);
     }
 
     /**
@@ -25,7 +26,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        //show create page
         return view('admin/rooms/create');
     }
 
@@ -37,7 +38,34 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required:unique:rooms',
+            'price' => 'required|numeric',
+            'size' => 'required|numeric',
+            'capacity' => 'required|numeric',
+            'services' => 'required',
+            'description' => 'required',
+            'image' => 'required|image',
+        ]);
+
+        if($request->hasFile('image')){
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/rooms', $fileNameToStore);
+        }
+
+        Room::Create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'size' => $request->size,
+            'capacity' => $request->capacity,
+            'services' => $request->services,
+            'description' => $request->description,
+            'image' => $fileNameToStore,
+        ]);
+        return redirect('/admin/rooms')->with('success', 'New room added successfully');
     }
 
     /**
@@ -48,7 +76,7 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
+        return view('/admin/rooms/view')->with('room', $room);
     }
 
     /**
@@ -59,7 +87,8 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        // return edit page
+        return view('admin/rooms/edit')->with('room', $room);
     }
 
     /**
@@ -71,7 +100,33 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'size' => 'required|numeric',
+            'capacity' => 'required|numeric',
+            'services' => 'required',
+            'description' => 'required',
+            // 'image' => 'required|image',
+        ]);
+
+        if($request->hasFile('image')){
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/rooms', $fileNameToStore);
+            $room->image = $fileNameToStore;
+        }
+
+        $room->name = $request->name;
+        $room->price = $request->price;
+        $room->size = $request->size;
+        $room->capacity = $request->capacity;
+        $room->services = $request->services;
+        $room->description = $request->description;
+        $room->save();
+        return redirect('/admin/rooms')->with('success', 'Room has been updated');
     }
 
     /**
@@ -82,6 +137,7 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        $room->delete();
+        return redirect('/admin/rooms')->with('success', 'Room has been removed');
     }
 }

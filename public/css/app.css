@@ -10942,3 +10942,15 @@ a.text-dark:focus {
   }
 }
 
+.card-img-top {
+  height: 15vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-img-top.full {
+  height: 30vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+

@@ -28,7 +28,7 @@
             @include('layouts.navbar')
             <div class="content">
                 @if(session('success') || session('error') || count($errors) > 0)
-                <div class="container my-3">
+                <div class="container-fluid my-3">
                     @include('layouts/messages')
                 </div>
                 @endif
@@ -49,7 +49,6 @@
             </footer>
         </div>
     </div>
-
 </body>
 <script src="{{ asset('js/bs-custom-file-input.js') }}"></script>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
