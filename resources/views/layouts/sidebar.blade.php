@@ -20,16 +20,21 @@
                 </a>
             </li>
             @endif
-            <li
-                class="nav-item {{ request()->is('admin/brands') || request()->is('admin/brands/*')  ? 'active' : '' }}">
-                <a class="nav-link" href="/admin/brands">
+            <li class="nav-item {{ request()->is('admin/guests') || request()->is('admin/guests/*') ? 'active' : '' }}">
+                <a class="nav-link" href="/admin/guests">
+                    <i class="fas fa-users"></i>
+                    <p>Guests</p>
+                </a>
+            </li>
+            <li class="nav-item {{ request()->is('admin/rooms') || request()->is('admin/rooms/*')  ? 'active' : '' }}">
+                <a class="nav-link" href="/admin/rooms">
                     <i class="fas fa-door-open"></i>
                     <p>Rooms</p>
                 </a>
             </li>
             <li
-                class="nav-item {{ request()->is('admin/products') || request()->is('admin/products/*')  ? 'active' : '' }}">
-                <a class="nav-link" href="/admin/products">
+                class="nav-item {{ request()->is('admin/bookings') || request()->is('admin/bookings/*')  ? 'active' : '' }}">
+                <a class="nav-link" href="/admin/bookings">
                     <i class="fas fa-file-signature"></i>
                     <p>Bookings</p>
                 </a>

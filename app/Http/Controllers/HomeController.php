@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Room;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -23,6 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $rooms = Room::get(4);
         return view('admin/index');
     }
 
@@ -30,4 +23,24 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function welcome() {
+        $rooms = Room::orderBy('created_at', 'desc')->take(4)->get();
+        return view('welcome')->with('rooms', $rooms);
+    }
+
+    public function rooms() {
+        return view('rooms');
+    }
+
+    public function about() {
+        return view('about');
+    }
+
+    public function contact() {
+        return view('contact');
+    }
+
+    public function reservation() {
+        return view('reservation');
+    }
 }

@@ -1,0 +1,10 @@
+.btn-auth {
+    color: #343a40;
+    list-style-type: none;
+    display: flex;
+}
+
+.btn-auth a {
+    color: #343a40;
+    margin-right: 20px;
+}

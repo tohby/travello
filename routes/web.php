@@ -13,15 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome');
+Route::get('/rooms', 'HomeController@rooms');
+Route::get('/about-us', 'HomeController@about');
+Route::get('/contact', 'HomeController@contact');
+Route::get('/reservation', 'HomeController@reservation');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::resource('food', 'FoodController');
+    Route::resource('rooms', 'RoomController');
 });
