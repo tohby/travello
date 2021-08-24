@@ -29,7 +29,8 @@ class HomeController extends Controller
     }
 
     public function rooms() {
-        return view('rooms');
+        $rooms = Room::orderBy('created_at', 'desc')->paginate(6);
+        return view('rooms')->with('rooms', $rooms);
     }
 
     public function about() {

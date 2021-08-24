@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="hero-text">
-                    <h1>Travello A Luxury Hotel</h1>
+                    <h1>Hotel Management System A Luxury Hotel</h1>
                     <p>Here are the best hotel booking sites, including recommendations for international
                         travel and for finding low-priced hotel rooms.</p>
                     <a href="#" class="primary-btn">Discover Now</a>
@@ -64,7 +64,8 @@
                         <span>About Us</span>
                         <h2>Intercontinental LA <br />Westlake Hotel</h2>
                     </div>
-                    <p class="f-para">Travello is a leading online accommodation site. We’re passionate about
+                    <p class="f-para">Hotel Management System is a leading online accommodation site. We’re passionate
+                        about
                         travel. Every day, we aspire to provide comfortable accomodation for you and strive to give
                         you the full experience of being at home while you're away from home.</p>
                     <p class="s-para">So when it comes to booking the perfect hotel, vacation rental, resort,
@@ -160,28 +161,25 @@
         <div class="hp-room-items">
             <div class="row">
                 @if ($rooms->count() > 0)
+                @foreach ($rooms as $room)
                 <div class="col-lg-3 col-md-6">
-                    <div class="hp-room-item set-bg" data-setbg="img/room/room-b1.jpg">
+                    <div class="hp-room-item set-bg" data-setbg="/storage/rooms/{{$room->image}}">
                         <div class="hr-text">
-                            <h3>Double Room</h3>
-                            <h2>199$<span>/Pernight</span></h2>
+                            <h3>{{$room->name}}</h3>
+                            <h2>{{$room->price}}$<span>/Pernight</span></h2>
                             <table>
                                 <tbody>
                                     <tr>
                                         <td class="r-o">Size:</td>
-                                        <td>30 ft</td>
+                                        <td>{{$room->size}} ft</td>
                                     </tr>
                                     <tr>
                                         <td class="r-o">Capacity:</td>
-                                        <td>Max persion 5</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="r-o">Bed:</td>
-                                        <td>King Beds</td>
+                                        <td>Max persion {{$room->capacity}}</td>
                                     </tr>
                                     <tr>
                                         <td class="r-o">Services:</td>
-                                        <td>Wifi, Television, Bathroom,...</td>
+                                        <td>{{$room->services}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -189,6 +187,7 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
                 @else
                 <div class="container spad">
                     <div class="row">

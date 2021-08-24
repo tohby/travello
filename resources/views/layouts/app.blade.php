@@ -7,7 +7,7 @@
     <meta name="keywords" content="Sona, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Travello</title>
+    <title>Hotel Management System</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
@@ -25,6 +25,13 @@
     <link rel="stylesheet" href="{{asset('css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}" type="text/css">
+
+    <style>
+        .top-image {
+            height: 12vw;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -72,7 +79,7 @@
                     <div class="col-lg-6">
                         <ul class="tn-left">
                             <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-                            <li><i class="fa fa-envelope"></i> info@dev.travello.com</li>
+                            <li><i class="fa fa-envelope"></i> info@dev.hotelmanagementsystem.com</li>
                         </ul>
                     </div>
                     <div class="col-lg-6">
@@ -89,7 +96,7 @@
 
 
                                 @else
-                                <span>Tobi Adeyinka <i class="fa fa-angle-down"></i></span>
+                                <span>{{ Auth::user()->name }}<i class="fa fa-angle-down"></i></span>
                                 <div class="flag-dropdown">
                                     <ul>
                                         <li><a href="#">Bookings</a></li>
@@ -115,7 +122,7 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="/">
-                                <h3 class="text-dark">Travello</h3>
+                                <h3 class="text-dark">Hotel Management System</h3>
                             </a>
                         </div>
                     </div>
@@ -153,7 +160,7 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <h3 class="text-light">Travello</h3>
+                                    <h3 class="text-light">Hotel Management System</h3>
                                 </a>
                             </div>
                             <p>The only place to be</p>
@@ -171,7 +178,7 @@
                             <h6>Contact Us</h6>
                             <ul>
                                 <li>(12) 345 67890</li>
-                                <li>info@dev.travello.com</li>
+                                <li>info@dev.hotelmanagementsystem.com</li>
                                 <li>856 Cordia Extension Apt. 356, Lake, United State</li>
                             </ul>
                         </div>
@@ -193,7 +200,6 @@
                     <div class="col-lg-5">
                         <div class="co-text">
                             <p>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>
                                     document.write(new Date().getFullYear());
                                 </script> All rights reserved
