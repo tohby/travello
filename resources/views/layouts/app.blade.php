@@ -119,14 +119,14 @@
         <div class="menu-item">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-6">
                         <div class="logo">
                             <a href="/">
                                 <h3 class="text-dark">Hotel Management System</h3>
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-10">
+                    <div class="col-lg-6">
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>

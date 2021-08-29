@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Food;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
@@ -13,7 +14,8 @@ class FoodController extends Controller
      */
     public function index()
     {
-        return view('admin/food/index');
+        $food = Food::orderBy('created_at', 'asc')->paginate(6);
+        return view('admin/food/index')->with('food', $food);
     }
 
     /**
@@ -23,7 +25,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/food/create');
     }
 
     /**
@@ -34,7 +36,18 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required:unique:food',
+            'price' => 'required|numeric',
+            'description' => 'required',
+        ]);
+
+        Food::Create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+        ]);
+        return redirect('/admin/food')->with('success', 'New Menu added successfully');
     }
 
     /**

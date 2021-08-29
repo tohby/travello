@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@welcome');
 Route::get('/rooms', 'HomeController@rooms');
+Route::get('/rooms/{id}', 'HomeController@roomDetail');
 Route::get('/about-us', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 Route::get('/reservation', 'HomeController@reservation');
@@ -23,6 +24,10 @@ Auth::routes();
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'HomeController@index');
+    Route::get('profile', 'UsersController@profile');
     Route::resource('food', 'FoodController');
     Route::resource('rooms', 'RoomController');
+    Route::resource('users', 'UsersController');
 });
+
+Route::put('/password', 'UsersController@password');

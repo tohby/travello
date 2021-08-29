@@ -62,7 +62,7 @@
                 <div class="about-text">
                     <div class="section-title">
                         <span>About Us</span>
-                        <h2>Intercontinental LA <br />Westlake Hotel</h2>
+                        <h2>Hotem Management System</h2>
                     </div>
                     <p class="f-para">Hotel Management System is a leading online accommodation site. We’re passionate
                         about

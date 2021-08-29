@@ -16,16 +16,16 @@
             <li class="nav-item {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/users">
                     <i class="fas fa-users"></i>
-                    <p>Users</p>
+                    <p>Staff</p>
                 </a>
             </li>
             @endif
-            <li class="nav-item {{ request()->is('admin/guests') || request()->is('admin/guests/*') ? 'active' : '' }}">
-                <a class="nav-link" href="/admin/guests">
-                    <i class="fas fa-users"></i>
-                    <p>Guests</p>
-                </a>
-            </li>
+            {{-- <li class="nav-item {{ request()->is('admin/guests') || request()->is('admin/guests/*') ? 'active' : '' }}">
+            <a class="nav-link" href="/admin/guests">
+                <i class="fas fa-users"></i>
+                <p>Guests</p>
+            </a>
+            </li> --}}
             <li class="nav-item {{ request()->is('admin/rooms') || request()->is('admin/rooms/*')  ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/rooms">
                     <i class="fas fa-door-open"></i>

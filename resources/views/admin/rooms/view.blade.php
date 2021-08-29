@@ -12,9 +12,9 @@
                 <li class="breadcrumb-item active" aria-current="page">View room <b>{{$room->name}}</li>
             </ol>
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-2 d-flex">
+            <a href="{{$room->id}}/edit" class="btn btn-default mr-4">Edit</a>
             <form method="POST" action="{{ route('rooms.destroy',$room->id) }}">
-                <a href="{{$room->id}}/edit" class="btn btn-default ">Edit</a>
                 {{ csrf_field() }}
                 {{ method_field('delete') }}
                 <button class="btn btn-danger float-right" type="submit">Delete</button>

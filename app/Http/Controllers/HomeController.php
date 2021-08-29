@@ -33,6 +33,11 @@ class HomeController extends Controller
         return view('rooms')->with('rooms', $rooms);
     }
 
+    public function roomDetail($id) {
+        $room = Room::find($id);
+        return view('room-details')->with('room', $room);
+    }
+
     public function about() {
         return view('about');
     }
