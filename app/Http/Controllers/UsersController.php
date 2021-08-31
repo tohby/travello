@@ -128,7 +128,7 @@ class UsersController extends Controller
             return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
         }else{
             $user = User::find(Auth::user()->id);
-            $user->password = $request->password;
+            $user->password = Hash::make($request->password);
             $user->save();
             return redirect()->back()->with('success', 'Your password was changed successfully');
         }

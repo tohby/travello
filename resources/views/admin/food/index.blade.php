@@ -17,13 +17,13 @@
     </div>
     <div class="row my-4">
         <div class="col-md-12">
-            @foreach ($food as $food)
+            @foreach ($food as $food_item)
             <div class="card p-1">
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="ml-3">
-                            <h5> {{$food->name}} </h5>
-                            {{-- <p> {{$user->email}} </p> --}}
+                            <h4> {{$food_item->name}} </h4>
+                            <p> {{$food_item->description}} </p>
                         </div>
 
                         <div class="ml-auto h6">
@@ -33,7 +33,7 @@
                                     <i class="fas fa-ellipsis-v"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <form method="POST" action="{{ route('food.destroy',$food->id) }}">
+                                    <form method="POST" action="{{ route('food.destroy',$food_item->id) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}
                                         <button class="dropdown-item text-danger" type="submit">Delete</button>
