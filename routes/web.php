@@ -25,9 +25,13 @@ Auth::routes();
 Route::prefix('admin')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::get('profile', 'UsersController@profile');
+    Route::resource('bookings', 'BookingController');
     Route::resource('food', 'FoodController');
     Route::resource('rooms', 'RoomController');
     Route::resource('users', 'UsersController');
+    Route::resource('feedbacks', 'FeedbackController');
 });
 
 Route::put('/password', 'UsersController@password');
+Route::post('/feedback', 'FeedbackController@store');
+Route::post('/check-availability', 'CheckController@checkAvailablity');

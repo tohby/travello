@@ -69,7 +69,8 @@ class FoodController extends Controller
      */
     public function edit($id)
     {
-        //
+        $food = Food::find($id);
+        return view('/admin/food/edit')->with('food', $food);
     }
 
     /**
@@ -81,7 +82,18 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request, [
+            'name' => 'required:unique:food',
+            'price' => 'required|numeric',
+            'description' => 'required',
+        ]);
+
+        $food = Food::find($id);
+        $food->name = $request->name;
+        $food->price = $request->price;
+        $food->description = $request->description;
+        $food->save();
+        return redirect('/admin/food')->with('success', 'Menu added updated');
     }
 
     /**
@@ -92,6 +104,8 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $food = Food::find($id);
+        $food->delete();
+        return redirect('/admin/food')->with('success', 'Food has been deleted');
     }
 }

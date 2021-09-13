@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="hero-text">
-                    <h1>Hotel Management System A Luxury Hotel</h1>
+                    <h1>Hotel Management System</h1>
                     <p>Here are the best hotel booking sites, including recommendations for international
                         travel and for finding low-priced hotel rooms.</p>
                     <a href="#" class="primary-btn">Discover Now</a>
@@ -14,31 +14,18 @@
             </div>
             <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
                 <div class="booking-form">
-                    <h3>Booking Your Rooms</h3>
-                    <form action="#">
+                    <h3>Book Your Rooms</h3>
+                    <form action="{{action("CheckController@checkAvailablity")}}" method="POST">
+                        @csrf
                         <div class="check-date">
-                            <label for="date-in">Check In:</label>
-                            <input type="text" class="date-input" id="date-in">
+                            <label for="dateIn">Check In:</label>
+                            <input type="text" class="date-input" name="dateIn">
                             <i class="icon_calendar"></i>
                         </div>
                         <div class="check-date">
                             <label for="date-out">Check Out:</label>
-                            <input type="text" class="date-input" id="date-out">
+                            <input type="text" class="date-input" name="dateOut">
                             <i class="icon_calendar"></i>
-                        </div>
-                        <div class="select-option">
-                            <label for="guest">Guests:</label>
-                            <select id="guest">
-                                <option value="">2 Adults</option>
-                                <option value="">3 Adults</option>
-                            </select>
-                        </div>
-                        <div class="select-option">
-                            <label for="room">Room:</label>
-                            <select id="room">
-                                <option value="">1 Room</option>
-                                <option value="">2 Room</option>
-                            </select>
                         </div>
                         <button type="submit">Check Availability</button>
                     </form>

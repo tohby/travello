@@ -33,6 +33,8 @@
                                     <i class="fas fa-ellipsis-v"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a href="/admin/food/{{ $food_item->id }}/edit"
+                                        class="dropdown-item btn btn-default">Edit</a>
                                     <form method="POST" action="{{ route('food.destroy',$food_item->id) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}

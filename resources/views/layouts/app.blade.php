@@ -148,8 +148,12 @@
     <!-- Header End -->
 
     <div id="page">
+        <div class="container my-3">
+            @include('layouts/messages')
+        </div>
         @yield('content')
     </div>
+    @include('sweetalert::alert')
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
