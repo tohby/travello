@@ -46,6 +46,13 @@
                 </a>
             </li>
             <li
+                class="nav-item {{ request()->is('admin/food-order') || request()->is('admin/food-order/*')  ? 'active' : '' }}">
+                <a class="nav-link" href="/admin/food-order">
+                    <i class="fas fa-bread-slice"></i>
+                    <p>Food orders</p>
+                </a>
+            </li>
+            <li
                 class="nav-item {{ request()->is('admin/feedbacks') || request()->is('admin/feedbacks/*')  ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/feedbacks">
                     <i class="fas fa-comment-dots"></i>

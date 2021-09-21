@@ -27,6 +27,7 @@ Route::prefix('admin')->group(function () {
     Route::get('profile', 'UsersController@profile');
     Route::resource('bookings', 'BookingController');
     Route::resource('food', 'FoodController');
+    Route::resource('food-order', 'FoodOrderController');
     Route::resource('rooms', 'RoomController');
     Route::resource('users', 'UsersController');
     Route::resource('feedbacks', 'FeedbackController');

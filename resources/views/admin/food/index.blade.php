@@ -12,7 +12,8 @@
             </ol>
         </div>
         <div class="col-lg-2">
-            <a href="/admin/food/create" class="btn btn-default float-right">Create new Menu</a>
+            <a href="/admin/food/create" class="btn btn-default float-right">Create new
+                Menu</a>
         </div>
     </div>
     <div class="row my-4">

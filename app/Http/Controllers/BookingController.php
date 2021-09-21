@@ -16,7 +16,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = Booking::orderBy('created_at', 'desc')->paginate(12);
+        return view('admin/bookings/index')->with('bookings', $bookings);
     }
 
     /**

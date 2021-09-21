@@ -22,4 +22,12 @@ class Booking extends Model
     {
         return $this->belongsTo(Room::class, 'roomId');
     }
+
+    /**
+     * Get the user that owns the booking.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userId');
+    }
 }
