@@ -22,7 +22,7 @@
                 <img src="/storage/rooms/{{$room->image}}" alt="{{$room->name}}" class="card-img-top">
                 <div class="card-body">
                     <h4 class="card-title font-weight-bold">{{$room->name}}</h4>
-                    <p class="font-weight-bold">Room {{$room->id}}</p>
+                    <p class="font-weight-bold">Room {{$room->roomNo}}</p>
                     <p class="font-weight-bold">{{$room->price}}$/Night</p>
                     <p>{{Str::of($room->description)->limit(150)}}</p>
                     <div class="mt-3 float-right row">

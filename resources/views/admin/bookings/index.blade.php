@@ -43,13 +43,27 @@
                                 <td>@if ($booking->status === 0)
                                     <p class="text-primary">Awaiting confirmation</p>
                                     @elseif($booking->status === 1)
-                                    <p class="text-success"> confirmed</p>
+                                    <p class="text-success"> Confirmed</p>
                                     @else
                                     <p class="text-danger"> Cancelled</p>
                                     @endif</td>
                                 <td>
-                                    <button class="btn btn-default mr-2">Confirm</button>
-                                    <button class="btn btn-danger">Cancel</button>
+                                    @if ($booking->status === 0)
+                                    <form method="POST" action="{{ route('bookings.update',$booking->id) }}">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="status" value="1">
+                                        <button class="btn btn-default mr-2" type="submit">Confirm</button>
+                                        @method('PUT')
+                                    </form>
+                                    <form method="POST" action="{{ route('bookings.update',$booking->id) }}">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="status" value="2">
+                                        <button class="btn btn-danger" type="submit">Cancel</button>
+                                        @method('PUT')
+                                    </form>
+                                    @endif
+                                </td>
+
                                 </td>
                             </tr>
                             @endforeach

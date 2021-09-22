@@ -39,6 +39,7 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'roomNo' => 'required:unique:rooms',
             'name' => 'required:unique:rooms',
             'price' => 'required|numeric',
             'size' => 'required|numeric',
@@ -57,6 +58,7 @@ class RoomController extends Controller
         }
 
         Room::Create([
+            'roomNo' => $request->roomNo,
             'name' => $request->name,
             'price' => $request->price,
             'size' => $request->size,
@@ -101,6 +103,7 @@ class RoomController extends Controller
     public function update(Request $request, Room $room)
     {
         $this->validate($request, [
+            'roomNo' => 'required',
             'name' => 'required',
             'price' => 'required|numeric',
             'size' => 'required|numeric',
@@ -119,6 +122,7 @@ class RoomController extends Controller
             $room->image = $fileNameToStore;
         }
 
+        $room->roomNo = $request->roomNo;
         $room->name = $request->name;
         $room->price = $request->price;
         $room->size = $request->size;

@@ -93,7 +93,14 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        //
+        $this->validate($request, [
+            'status' => 'required',
+        ]);
+        $message =  $request->status === 1 ? 'Booking has been confirmed successfully' : 'Booking has been cancelled';
+
+        $booking->status = $request->status;
+        $booking->save();
+        return back()->with('success', $message);
     }
 
     /**

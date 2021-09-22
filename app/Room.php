@@ -12,7 +12,7 @@ class Room extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'price', 'size', 'capacity', 'services', 'image', 'description'
+        'name', 'price', 'size', 'capacity', 'services', 'image', 'description', 'roomNo'
     ];
 
     /**

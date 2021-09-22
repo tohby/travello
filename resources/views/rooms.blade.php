@@ -30,6 +30,7 @@
                     <img src="/storage/rooms/{{$room->image}}" alt="" class="top-image">
                     <div class="ri-text">
                         <h4>{{$room->name}}</h4>
+                        <h4>Room #{{$room->roomNo}}</h4>
                         <h3>{{$room->price}}$<span>/Pernight</span></h3>
                         <table>
                             <tbody>

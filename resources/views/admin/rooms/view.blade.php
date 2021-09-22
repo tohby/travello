@@ -27,6 +27,7 @@
                 <img src="/storage/rooms/{{$room->image}}" alt="{{$room->name}}" class="card-img-top full">
                 <div class="card-body">
                     <h4 class="card-title font-weight-bold">{{$room->name}}</h4>
+                    <p class="font-weight-bold">Room #{{$room->roomNo}}</p>
                     <p class="font-weight-bold">{{$room->price}}$/Night</p>
                     <p>{{$room->description}}</p>
                     <p>Size: {{$room->size}} ft</p>

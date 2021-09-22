@@ -29,6 +29,7 @@
                     <div class="rd-text">
                         <div class="rd-title">
                             <h3>{{$room->name}}</h3>
+                            <h4>Room #{{$room->roomNo}}</h4>
                             <div class="rdt-right">
                                 {{-- <a href="#">Book room</a> --}}
                             </div>

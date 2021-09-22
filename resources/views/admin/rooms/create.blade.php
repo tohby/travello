@@ -24,6 +24,11 @@
                     <form action="{{action("RoomController@store")}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
+                            <label for="name">Room number:</label>
+                            <input type="number" class="form-control" name="roomNo" placeholder="Enter room number"
+                                required>
+                        </div>
+                        <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" name="name" placeholder="Enter room name">
                         </div>

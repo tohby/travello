@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Food;
 use App\FoodOrder;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class FoodOrderController extends Controller
      */
     public function index()
     {
-        return view('admin/foodOrder/index');
+        $orders = FoodOrder::orderBy('created_at', 'desc')->paginate(12);
+        return view('admin/foodOrder/index')->with('orders', $orders);
     }
 
     /**
@@ -24,7 +27,9 @@ class FoodOrderController extends Controller
      */
     public function create()
     {
-        //
+        $foods = Food::orderBy('name', 'asc')->get();
+        $users = User::where('role', 1)->orderBy('name', 'asc')->get();
+        return view('admin/foodOrder/create')->with('users', $users)->with('foods', $foods);
     }
 
     /**
@@ -35,7 +40,19 @@ class FoodOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'user' => 'required',
+            'food' => 'required',
+            'plates' => 'required',
+        ]);
+
+        FoodOrder::Create([
+            'userId' => $request->user,
+            'foodId' => $request->food,
+            'plates' => $request->plates
+        ]);
+
+        return redirect('/admin/food-order')->with('success', 'Order has been created');
     }
 
     /**
