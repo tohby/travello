@@ -19,6 +19,9 @@ Route::get('/rooms/{id}', 'HomeController@roomDetail');
 Route::get('/about-us', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 Route::get('/reservation', 'HomeController@reservation');
+Route::get('/reservation/pay', 'HomeController@pay');
+Route::post('/checkout', 'HomeController@checkout')->name('checkout');
+
 
 Auth::routes();
 

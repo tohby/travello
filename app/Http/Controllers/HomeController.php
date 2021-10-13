@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Room;
 use Illuminate\Http\Request;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
 class HomeController extends Controller
 {
@@ -48,5 +50,22 @@ class HomeController extends Controller
 
     public function reservation() {
         return view('reservation');
+    }
+
+    public function pay(){
+        return view('pay');
+    }
+
+    public function checkout(Request $request){
+        $price = $request->price * $request->days;
+        $charge = Stripe::charges()->create([
+            'amount' => $price,
+            'currency' => 'usd',
+            'source' => $request->stripeToken,
+            'description' => 'Order',
+            'receipt_email' => Auth::user()->email,
+        ]);
+
+        return redirect('/')->with('success', 'Your invoice has been paid');
     }
 }

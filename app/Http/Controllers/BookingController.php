@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\Room;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,16 +51,15 @@ class BookingController extends Controller
         if(count($bookings) > 0) {
             return back()->with('error', 'Room is booked alrady! Please check other rooms');
         }else{
-            Booking::Create([
+            $booking = Booking::Create([
                 'roomId' => $request->roomId,
                 'userId' => Auth::id(),
                 'startDate' => Carbon::create($request->dateIn),
                 'endDate' => Carbon::create($request->dateOut),
             ]);
-            return back()->with('Success', 'Your reservation has been sent! An invoice will be sent to your email once your reservation is confirmed. Thank you.');
+            $room = Room::find($request->roomId);
+            return redirect('/reservation/pay')->with('room', $room)->with('booking', $booking)->with('success', 'Your reservation has been sent! Please provide payment details below. Thank you.');
         }
-
-
     }
 
     /**

@@ -7,6 +7,8 @@
     <meta name="keywords" content="Sona, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com/v3/ ">
     <title>Hotel Management System</title>
 
     <!-- Google Font -->
@@ -31,7 +33,23 @@
             height: 12vw;
             object-fit: cover;
         }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
     </style>
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
@@ -236,6 +254,81 @@
     <script src="{{asset('js/jquery.slicknav.js')}}"></script>
     <script src="{{asset('js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+    <script>
+        (function() {
+                // Create a Stripe client.
+                var stripe = Stripe('pk_test_51JjG5vBXaesFdl7kZVw91GT6iKGQoSuX1gYnkWMSzNmZtO2iD3schKldfrfW4iVduzv1jJ90XyBngQHSuLvNLwBt00dDVtJmB1');
+                
+                // Create an instance of Elements.
+                var elements = stripe.elements();
+            
+                var style = {
+                base: {
+                color: '#32325d',
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                color: '#aab7c4'
+                }
+                },
+                invalid: {
+                color: '#fa755a',
+                iconColor: '#fa755a'
+                }
+                };
+    
+                // Create an instance of the card Element.
+                var card = elements.create('card', {
+                    style: style,
+                    hidePostalCode: true,
+                });
+                
+                // Add an instance of the card Element into the `card-element` <div>.
+                    card.mount('#card-element');
+                
+                    // Handle real-time validation errors from the card Element.
+                    card.on('change', function(event) {
+                    var displayError = document.getElementById('card-errors');
+                    if (event.error) {
+                    displayError.textContent = event.error.message;
+                    } else {
+                    displayError.textContent = '';
+                    }
+                    });
+                
+                    // Handle form submission.
+                    var form = document.getElementById('payment-form');
+                    form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                
+                    stripe.createToken(card).then(function(result) {
+                    if (result.error) {
+                    // Inform the user if there was an error.
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                    } else {
+                    // Send the token to your server.
+                    stripeTokenHandler(result.token);
+                    }
+                    });
+                    });
+                
+                    // Submit the form with the token ID.
+                    function stripeTokenHandler(token) {
+                    // Insert the token ID into the form so it gets submitted to the server
+                    var form = document.getElementById('payment-form');
+                    var hiddenInput = document.createElement('input');
+                    hiddenInput.setAttribute('type', 'hidden');
+                    hiddenInput.setAttribute('name', 'stripeToken');
+                    hiddenInput.setAttribute('value', token.id);
+                    form.appendChild(hiddenInput);
+                
+                    // Submit the form
+                    form.submit();
+                    }
+            }) ();
+    </script>
 </body>
 
 </html>
