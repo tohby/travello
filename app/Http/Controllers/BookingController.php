@@ -44,9 +44,7 @@ class BookingController extends Controller
             'dateOut' => 'required',
         ]);
 
-        $bookings = Booking::where('roomId', $request->roomId)
-        ->whereDate('endDate', '<', $request->dateIn)
-        ->whereDate('startDate', '>', $request->dateOut)->get();
+        $bookings = Booking::where('roomId', $request->roomId)->whereDate('startDate', '<=', Carbon::create($request->dateOut))->whereDate('endDate', '>=', Carbon::create($request->dateIn))->get();
 
         if(count($bookings) > 0) {
             return back()->with('error', 'Room is booked alrady! Please check other rooms');

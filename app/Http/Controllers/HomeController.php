@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Room;
+use App\Food;
+use App\FoodOrder;
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
@@ -46,6 +48,26 @@ class HomeController extends Controller
 
     public function contact() {
         return view('contact');
+    }
+
+    public function food() {
+        $foods = Food::orderBy('name', 'asc')->get();
+        return view('food')->with('foods', $foods);
+    }
+
+    public function foodOrder(Request $request) {
+        $this->validate($request, [
+            'food' => 'required',
+            'plates' => 'required',
+        ]);
+
+        FoodOrder::Create([
+            'userId' => Auth::id(),
+            'foodId' => $request->food,
+            'plates' => $request->plates
+        ]);
+
+        return redirect('/food')->with('success', 'Order has been created');
     }
 
     public function reservation() {

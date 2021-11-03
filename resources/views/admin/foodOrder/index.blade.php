@@ -12,7 +12,7 @@
             </ol>
         </div>
         <div class="col-lg-4">
-            <a href="/admin/food-order/create" class="btn btn-default float-right mr-4">Create Order</a>
+            {{-- <a href="/admin/food-order/create" class="btn btn-default float-right mr-4">Create Order</a> --}}
         </div>
     </div>
     <div class="row my-4">

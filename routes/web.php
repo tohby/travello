@@ -18,6 +18,8 @@ Route::get('/rooms', 'HomeController@rooms');
 Route::get('/rooms/{id}', 'HomeController@roomDetail');
 Route::get('/about-us', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
+Route::get('/food', 'HomeController@food');
+Route::post('/foodOrder', 'HomeController@foodOrder')->name('food-order');
 Route::get('/reservation', 'HomeController@reservation');
 Route::get('/reservation/pay', 'HomeController@pay');
 Route::post('/checkout', 'HomeController@checkout')->name('checkout');

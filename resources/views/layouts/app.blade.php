@@ -118,6 +118,7 @@
                                 <div class="flag-dropdown">
                                     <ul>
                                         <li><a href="#">Bookings</a></li>
+                                        <li><a href="/food">Food Orders</a></li>
                                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                 Logout</a></li>
